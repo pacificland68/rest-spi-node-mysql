@@ -13,7 +13,7 @@ function routes(app: Express){
   //   console.log('taskInfo', taskInfo)
   //   return res.status(200).json(taskInfo);
   // });
-  app.get("/api/taskinfo/:id", validateResource(getTaskInfoSchema), getTaskInfoHandler)
+  app.get("/api/taskinfo", validateResource(getTaskInfoSchema), getTaskInfoHandler)
 }
 
 export default routes

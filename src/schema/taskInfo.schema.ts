@@ -10,6 +10,12 @@ const params = {
   params: object({
     id: string({
       required_error: "id is required"
+    }),
+    currentPage: string({
+      required_error: "currentPage is required"
+    }),
+    pageSize: string({
+      required_error: "pageSize is required"
     })
   })
 }

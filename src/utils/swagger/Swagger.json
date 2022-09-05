@@ -18,7 +18,7 @@
   "host": "localhost:9999",
   "basePath": "/api",
   "paths": {
-    "/taskinfo/{id}": {
+    "/taskinfo": {
       "get": {
         "summary": "根据id获取任务",
         "description": "根据id获取任务",
@@ -28,8 +28,22 @@
         "parameters": [
           {
             "name": "id",
-            "in": "path",
+            "in": "query",
             "description": "task id that needs to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "currentPage",
+            "in": "query",
+            "description": "currentPage that needs to be deleted",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "pageSize that needs to be deleted",
             "required": true,
             "type": "string"
           }
