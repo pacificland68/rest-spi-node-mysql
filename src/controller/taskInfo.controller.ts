@@ -1,9 +1,10 @@
 import {Request, Response} from 'express'
-import { UpdateTaskInfoInput } from '../schema/taskInfo.schema'
-import { findTaskInfo } from '../service/taskInfo.service';
+import { TaskInfo } from '../models/TaskInfo.model';
+import { AllTaskInfoInput, UpdateTaskInfoInput } from '../schema/taskInfo.schema'
+import { findTaskInfo, findAllTaskInfo } from '../service/taskInfo.service';
 
 export async function getTaskInfoHandler(
-  req: Request<UpdateTaskInfoInput['params']>, res: Response
+  req: Request<UpdateTaskInfoInput['query']>, res: Response
 ){
   // const id = req.params.id
   // const currentPage = req.params. currentPage
@@ -19,4 +20,18 @@ export async function getTaskInfoHandler(
     return res.sendStatus(404)
   }
   return res.send(taskInfo)
+}
+
+export async function getAllTaskInfoHandler(req: Request<AllTaskInfoInput['query']>, res: Response){
+  const currentPage = req.query.currentPage as string
+  const pageSize = req.query.pageSize as string
+
+  const allTaskInfo = await findAllTaskInfo(currentPage, pageSize)
+  console.log('allTaskInfo', allTaskInfo)
+
+  if(!allTaskInfo){
+    return res.sendStatus(404)
+  }
+
+  return res.send(allTaskInfo)
 }

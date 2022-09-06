@@ -5,7 +5,7 @@ const valiate = (schema: AnyZodObject) => (req: Request, res: Response, next: Ne
   try{
     schema.parse({
       body: req.body,
-      query: req.params,
+      query: req.query,
       params: req.params
     })
     next()

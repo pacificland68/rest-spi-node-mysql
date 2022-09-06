@@ -1,8 +1,8 @@
 import "reflect-metadata";
 import {Express, Request, Response} from 'express'
-import {getTaskInfoHandler} from './controller/taskInfo.controller'
+import {getTaskInfoHandler, getAllTaskInfoHandler} from './controller/taskInfo.controller'
 import { TaskInfo } from './models/TaskInfo.model';
-import {getTaskInfoSchema} from './schema/taskInfo.schema'
+import {getTaskInfoSchema, getAllTaskInfoSchema} from './schema/taskInfo.schema'
 import validateResource from './middleware/validateResource'
 
 function routes(app: Express){
@@ -14,6 +14,8 @@ function routes(app: Express){
   //   return res.status(200).json(taskInfo);
   // });
   app.get("/api/taskinfo", validateResource(getTaskInfoSchema), getTaskInfoHandler)
+
+  app.get("/api/getAllTask", validateResource(getAllTaskInfoSchema), getAllTaskInfoHandler)
 }
 
 export default routes
