@@ -47,13 +47,30 @@
             "required": true,
             "type": "string"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
       }
     },
     "/getAllTask": {
       "get": {
-        "summary": "获取任务列表",
-        "description": "获取任务列表",
+        "summary": "获取全部任务列表",
+        "description": "获取全部任务列表",
         "produces": [
           "application/json"
         ],
@@ -72,7 +89,24 @@
             "required": true,
             "type": "string"
           }
-        ]
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/todosResponse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid status value",
+            "schema": {
+              "$ref": "#/definitions/InvalidResponse"
+            }
+          }
+        }
       }
     }
   },

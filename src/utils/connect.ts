@@ -1,5 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
-import {TaskInfo} from '../models/TaskInfo.model'
+import {List} from '../models/List.model'
+import { Label } from "../models/Label.model";
+import { ListItem } from "../models/ListItem.model"
 import config from 'config'
 
 // async function connect(){
@@ -22,10 +24,10 @@ const connect = new Sequelize({
   dialect: "mysql",
   host: "localhost",
   username: "root",
-  password: "123456",
-  database: "lims-min-0805",
+  password: "frank951216",
+  database: "imooc-news",
   logging: true,
-  models: [TaskInfo],
+  models: [List,Label,ListItem],
 })
 
 export default connect

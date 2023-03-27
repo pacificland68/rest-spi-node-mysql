@@ -15,6 +15,9 @@ export async function getTaskInfoHandler(
   console.log('id', id);
 
   const taskInfo = await findTaskInfo(id, currentPage, pageSize)
+
+  console.log('taskInfo', taskInfo);
+  
   
   if(!taskInfo){
     return res.sendStatus(404)
